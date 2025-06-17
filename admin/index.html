@@ -1,17 +1,14 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <title>Content Manager</title>
-    <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
   </head>
   <body>
-    <script>
-      // Needed for Git Gateway to work smoothly
-      window.CMS_MANUAL_INIT = true;
-    </script>
-    <script>
-      CMS.init();
-    </script>
+    <!-- Mounting point for the CMS -->
+    <script src="https://unpkg.com/netlify-cms@^2.10.0/dist/netlify-cms.js"></script>
+    
+    <!-- Your custom admin config or script should come AFTER -->
+    <script src="admin.js"></script>
   </body>
 </html>
