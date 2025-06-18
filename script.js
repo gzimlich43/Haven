@@ -17,6 +17,10 @@ const taglines = [
   "It’s 2am. You’re exhausted. Haven’s still here.",
   "Caregiver support, when no one else is awake."
 ];
+function toggleMenu() {
+  const navbar = document.getElementById('navbar');
+  navbar.classList.toggle('active');
+}
 
 const chosen = taglines[Math.floor(Math.random() * taglines.length)];
 document.getElementById("tagline-bar").textContent = chosen;
