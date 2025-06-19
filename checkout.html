@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+
+  <title>Subscribe to With Haven</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+  body {
+    padding-top: 80px; /* Pushes content below fixed navbar */
+  }
+
+  .navbar {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }
+
+    .subscription-wrapper {
+      max-width: 600px;
+      margin: 3em auto;
+      background: #fff;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    label, select, input {
+      display: block;
+      width: 100%;
+      margin-bottom: 1em;
+      padding: 0.75em;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1em;
+    }
+    .pay-button-wrapper {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Founder Story.html">Founder's Note</a>
+    <a href="blog.html">Blog</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="checkout.html" class="active">Buy Now</a>
+  </nav>
+
+
+
+<body>
+
+  <main>
+    <div class="subscription-wrapper">
+      <h2>Subscribe to With Haven</h2>
+      <p>Choose your plan and enter the recipient's email if buying for someone else.</p>
+
+      <label for="plan">Select Plan:</label>
+      <select id="plan" onchange="switchPlan()">
+        <option value="monthly">$14.99/month</option>
+        <option value="yearly">$139.99/year</option>
+      </select>
+
+      <label for="recipient-email">Recipient Email (optional):</label>
+      <input type="email" id="recipient-email" placeholder="Enter recipient email">
+
+      <div id="monthly" class="pay-button-wrapper">
+        <div style="overflow: auto; display: flex; justify-content: center;">
+          <a target="_blank" href="https://square.link/u/ONIv1ZJb?src=embed" class="cta-button" style="min-width: 212px; text-align: center;">Pay Monthly</a>
+        </div>
+      </div>
+
+      <div id="yearly" class="pay-button-wrapper">
+        <div style="overflow: auto; display: flex; justify-content: center;">
+          <a target="_blank" href="https://square.link/u/u93NyHSz?src=embed" class="cta-button" style="min-width: 212px; text-align: center;">Pay Yearly</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function switchPlan() {
+      const selected = document.getElementById('plan').value;
+      document.getElementById('monthly').style.display = selected === 'monthly' ? 'block' : 'none';
+      document.getElementById('yearly').style.display = selected === 'yearly' ? 'block' : 'none';
+    }
+
+    // Show default plan
+    switchPlan();
+  </script>
+  
+
+
+<footer>
+  <div class="social">
+    <a href="https://www.instagram.com/withhavenai/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.linkedin.com/company/havenai/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.facebook.com/withhavenai" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+    <a href="mailto:info@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+  <div class="legal">
+    <a href="terms.html">Terms of Use</a> | 
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <p>With Haven AI, LLC © 2025</p>
+  <p>“Created with care by caregivers, for caregivers.”</p>
+</footer>
+
+</body>
+</html>
