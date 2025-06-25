@@ -55,65 +55,69 @@
     <p>“Created with care by caregivers, for caregivers.”</p>
   </footer>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+ <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
-      authDomain: "with-haven.firebaseapp.com",
-      projectId: "with-haven",
-      storageBucket: "with-haven.firebasestorage.app",
-      messagingSenderId: "326457103064",
-      appId: "1:326457103064:web:698a1a375b429eaa443dad",
-      measurementId: "G-5QJY53CZTQ"
-    };
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
+    authDomain: "with-haven.firebaseapp.com",
+    projectId: "with-haven",
+    storageBucket: "with-haven.firebasestorage.app",
+    messagingSenderId: "326457103064",
+    appId: "1:326457103064:web:698a1a375b429eaa443dad",
+    measurementId: "G-5QJY53CZTQ"
+  };
 
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const db = getFirestore(app);
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
 
-    async function loadBlogPosts() {
-      const querySnapshot = await getDocs(collection(db, "blogposts"));
-      let blogHTML = "";
+  async function loadBlogPosts() {
+    const querySnapshot = await getDocs(collection(db, "blogposts"));
+    let blogHTML = "";
 
-      querySnapshot.forEach((doc) => {
-        const data = doc.data();
-        const imageHTML = data.ImageURL ? `<img src="${data.ImageURL}" alt="${data.Title}" class="blog-image"/>` : '';
-        const isLongPost = data.Content.length > 300;
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
 
-        blogHTML += `
-          <div class="blog-box fade-in">
-            <article>
-              ${imageHTML}
-              <h2>${data.Title}</h2>
-              <p class="blog-content ${isLongPost ? 'collapsed' : ''}">${data.Content}</p>
-              ${isLongPost ? '<button class="read-more-btn">Read More</button>' : ''}
-              <p><em>By ${data.Author} on ${new Date(data.Date.seconds * 1000).toLocaleDateString()}</em></p>
-            </article>
-          </div>
-        `;
+      // Safe defaults to prevent blank page
+      const title = data.Title || "Untitled Post";
+      const content = data.Content || "No content available.";
+      const author = data.Author || "Unknown Author";
+      const date = data.Date ? new Date(data.Date.seconds * 1000).toLocaleDateString() : "Unknown Date";
+      const imageHTML = data.ImageURL ? `<img src="${data.ImageURL}" alt="${title}" class="blog-image"/>` : '';
+
+      const isLongPost = content.length > 300;
+
+      blogHTML += `
+        <div class="blog-box fade-in">
+          <article>
+            ${imageHTML}
+            <h2>${title}</h2>
+            <p class="blog-content ${isLongPost ? 'collapsed' : ''}">${content}</p>
+            ${isLongPost ? '<button class="read-more-btn">Read More</button>' : ''}
+            <p><em>By ${author} on ${date}</em></p>
+          </article>
+        </div>
+      `;
+    });
+
+    document.getElementById('blog-container').innerHTML = blogHTML;
+
+    // Read More toggle
+    document.querySelectorAll('.read-more-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.previousElementSibling;
+        content.classList.toggle('expanded');
+        button.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
       });
+    });
+  }
 
-      document.getElementById('blog-container').innerHTML = blogHTML;
+  loadBlogPosts();
+</script>
 
-      // Read More toggle
-      document.querySelectorAll('.read-more-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const content = button.previousElementSibling;
-          content.classList.toggle('expanded');
-          if (content.classList.contains('expanded')) {
-            button.textContent = 'Read Less';
-          } else {
-            button.textContent = 'Read More';
-          }
-        });
-      });
-    }
-
-    loadBlogPosts();
-  </script>
 
 </body>
 </html>
