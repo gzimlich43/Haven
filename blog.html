@@ -58,7 +58,7 @@
  <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-  import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
@@ -76,9 +76,11 @@
 
   async function loadBlogPosts() {
     const today = new Date();
+
     const postsQuery = query(
       collection(db, "blogposts"),
-      where("Date", "<=", today)
+      where("Date", "<=", today),
+      orderBy("Date", "asc") // This orders posts from oldest to newest
     );
 
     const querySnapshot = await getDocs(postsQuery);
@@ -119,6 +121,7 @@
 
   loadBlogPosts();
 </script>
+
 
 
 
