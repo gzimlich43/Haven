@@ -86,7 +86,7 @@
   const db = getFirestore(app);
 
   async function loadBlogPosts() {
-    const querySnapshot = await getDocs(collection(db, "blogPosts"));
+    const querySnapshot = await getDocs(collection(db, "blogposts"));
     let blogHTML = "";
 
     querySnapshot.forEach((doc) => {
