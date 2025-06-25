@@ -58,7 +58,7 @@
  <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
@@ -75,7 +75,8 @@
   const db = getFirestore(app);
 
   async function loadBlogPosts() {
-    const querySnapshot = await getDocs(collection(db, "blogposts"));
+    const blogQuery = query(collection(db, "blogposts"), orderBy("Date", "desc")); // ✅ New query to sort by date
+    const querySnapshot = await getDocs(blogQuery);
     let blogHTML = "";
 
     querySnapshot.forEach((doc) => {
@@ -119,6 +120,7 @@
 
   loadBlogPosts();
 </script>
+
 
 
 
