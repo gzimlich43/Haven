@@ -75,48 +75,53 @@
   const db = getFirestore(app);
 
   async function loadBlogPosts() {
-    const querySnapshot = await getDocs(collection(db, "blogposts"));
-    let blogHTML = "";
+    try {
+      const querySnapshot = await getDocs(collection(db, "blogposts"));
+      let blogHTML = "";
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
 
-      // Safe defaults to prevent blank page
-      const title = data.Title || "Untitled Post";
-      const content = data.Content || "No content available.";
-      const author = data.Author || "Unknown Author";
-      const date = data.Date ? new Date(data.Date.seconds * 1000).toLocaleDateString() : "Unknown Date";
-      const imageHTML = data.ImageURL ? `<img src="${data.ImageURL}" alt="${title}" class="blog-image"/>` : '';
+        const title = data.Title || "Untitled Post";
+        const content = data.Content || "No content available.";
+        const author = data.Author || "Unknown Author";
+        const date = data.Date?.seconds ? new Date(data.Date.seconds * 1000).toLocaleDateString() : "Unknown Date";
+        const imageHTML = data.ImageURL ? `<img src="${data.ImageURL}" alt="${title}" class="blog-image"/>` : '';
 
-      const isLongPost = content.length > 300;
+        const isLongPost = content.length > 300;
 
-      blogHTML += `
-        <div class="blog-box fade-in">
-          <article>
-            ${imageHTML}
-            <h2>${title}</h2>
-            <p class="blog-content ${isLongPost ? 'collapsed' : ''}">${content}</p>
-            ${isLongPost ? '<button class="read-more-btn">Read More</button>' : ''}
-            <p><em>By ${author} on ${date}</em></p>
-          </article>
-        </div>
-      `;
-    });
-
-    document.getElementById('blog-container').innerHTML = blogHTML;
-
-    // Read More toggle
-    document.querySelectorAll('.read-more-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const content = button.previousElementSibling;
-        content.classList.toggle('expanded');
-        button.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
+        blogHTML += `
+          <div class="blog-box fade-in">
+            <article>
+              ${imageHTML}
+              <h2>${title}</h2>
+              <p class="blog-content ${isLongPost ? 'collapsed' : ''}">${content}</p>
+              ${isLongPost ? '<button class="read-more-btn">Read More</button>' : ''}
+              <p><em>By ${author} on ${date}</em></p>
+            </article>
+          </div>
+        `;
       });
-    });
+
+      document.getElementById('blog-container').innerHTML = blogHTML;
+
+      // Read More toggle
+      document.querySelectorAll('.read-more-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const content = button.previousElementSibling;
+          content.classList.toggle('expanded');
+          button.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
+        });
+      });
+    } catch (error) {
+      console.error("Error loading blog posts:", error);
+      document.getElementById('blog-container').innerHTML = "<p style='text-align:center;'>Failed to load posts. Please try again later.</p>";
+    }
   }
 
   loadBlogPosts();
 </script>
+
 
 
 </body>
