@@ -80,7 +80,7 @@
     const postsQuery = query(
       collection(db, "blogposts"),
       where("Date", "<=", today),
-      orderBy("Date", "asc") // This orders posts from oldest to newest
+      orderBy("Date", "desc") // This orders posts from oldest to newest
     );
 
     const querySnapshot = await getDocs(postsQuery);
