@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon-32x32.png" />
+
+  <title>Newsletter Signup | With Haven</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    
+  <div class="sticky-bar" id="tagline-bar"></div>
+
+  <header class="hero">
+    <div class="hero-banner">
+      <img src="Haven_App_Icon.png" alt="With Haven Logo" class="hero-logo" />
+      <h1>Support when you need it most. Even at 2am.</h1>
+    </div>
+    <a href="https://forms.gle/fiDPeEc5VArfEZqB9" target="_blank" class="cta-button">Join the Waitlist</a>
+  </header>
+<button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Founder Story.html">Founder's Note</a>
+    <a href="blog.html">Blog</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+    <a href="newsletter.html" class="active">Newsletter</a>
+    <a href="checkout.html" class="active">Buy Now</a>
+  </nav>
+
+  <main>
+    <section class="content-box fade-in" style="max-width: 500px; margin: 4em auto; text-align: center;">
+      <h2>Join the With Haven Newsletter</h2>
+      <p>Be the first to know about support updates, events, and more.</p>
+
+      <form id="newsletter-form">
+        <input type="email" name="fields[email]" placeholder="Email" required style="margin: 0.5em 0; padding: 0.75em; width: 100%; border-radius: 6px; border: 1px solid #ccc;" />
+        <input type="text" name="fields[name]" placeholder="First Name" required style="margin: 0.5em 0; padding: 0.75em; width: 100%; border-radius: 6px; border: 1px solid #ccc;" />
+        <input type="text" name="fields[last_name]" placeholder="Last Name" required style="margin: 0.5em 0; padding: 0.75em; width: 100%; border-radius: 6px; border: 1px solid #ccc;" />
+        <textarea name="fields[city]" placeholder="How did you hear about us? (optional)" style="margin: 0.5em 0; padding: 0.75em; width: 100%; border-radius: 6px; border: 1px solid #ccc;"></textarea>
+        <button type="submit" style="background-color: var(--accent-coral); color: white; padding: 0.75em 2em; border: none; border-radius: 6px; font-weight: bold;">Subscribe</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/withhavenai/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/havenai/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/withhavenai" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:info@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="legal">
+      <a href="terms.html">Terms of Use</a> | 
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p>With Haven AI, LLC © 2025</p>
+    <p>“Created with care by caregivers, for caregivers.”</p>
+  </footer>
+</body>
+</html>

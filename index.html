@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon-32x32.png" />
+
+  <title>With Haven | Support for Caregivers</title>
+  <link rel="stylesheet" href="style.css" /><script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="sticky-bar" id="tagline-bar"></div>
+  <header class="hero">
+    <div class="hero-banner">
+      <img src="Haven_App_Icon.png" alt="With Haven Logo" class="hero-logo" />
+      <h1>Support when you need it most. Even at 2am.</h1>
+    </div>
+    <a href="https://forms.gle/fiDPeEc5VArfEZqB9" target="_blank" class="cta-button">Join the Waitlist</a>
+  </header>
+  <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+  <nav class="navbar">
+    <a href="index.html" class="">Home</a>
+
+        <a href="Founder Story.html" class="">Founder's Note</a>
+        <a href="blog.html" class="">Blog</a>
+        <a href="faq.html" class="">FAQ</a>
+        <a href="about.html" class="active">About</a>
+        <a href="newsletter.html" class="active">Newsletter</a>
+        <a href="checkout.html" class="active">Buy Now</a>
+  </nav>
+  <main>
+    <div id="what" class="section-wrapper fade-in"><img src="pexels-judita-2026764.jpg" alt="Illustration" /><section class="content-box"><h2>What is Haven?</h2><p>Haven is here when caregiving feels relentless. AI-powered support that listens, validates, and helps you think clearly—especially when no one else gets it.</p><ul><li>Emotionally intelligent conversations</li><li>Guided journaling + safe venting</li><li>Help sorting thoughts and decisions</li></ul></section></div>
+    <div id="support" class="section-wrapper reverse fade-in"><img src="pexels-shvets-production-8415690.jpg" alt="Illustration" /><section class="content-box"><h2>How Haven Helps – Modes of Support</h2><ul><li>The Anchor – Grounding clarity in chaos</li><li>The Ally – Gentle emotional validation</li><li>The Archivist – Tracks patterns, remembers your journey</li><li>The Spark – Motivation when you’re running on empty</li><li>The Mirror – Reflects emotional truth kindly</li></ul></section></div>
+    <div id="who" class="section-wrapper fade-in"><img src="istockphoto-1371139520-612x612.jpg" alt="Illustration" /><section class="content-box"><h2>Who It’s For</h2><ul><li>Caregivers who are holding everything together while falling apart</li><li>Don’t want to burden friends or family</li><li>Are too tired to even know what to ask for</li><li>Need clarity or just a safe place to vent</li></ul></section></div>
+    <div id="why" class="section-wrapper reverse fade-in"><img src="istockphoto-1470789120-612x612.jpg" alt="Illustration" /><section class="content-box"><h2>Why It Works</h2><ul><li>Trauma-informed emotional logic</li><li>Created by a caregiver, for caregivers</li><li>Nonjudgmental and private</li><li>Personalized support anytime</li></ul><blockquote>“I needed help, but I didn’t want to talk to anyone. Haven felt like the only thing that didn’t make me feel worse.”</blockquote></section></div>
+    <section id="footer" class="fade-in"><h2>Join the Waitlist</h2><form action="https://forms.gle/fiDPeEc5VArfEZqB9" method="GET" target="_blank"><p>Be the first to know when Haven is available. Click below to secure your spot.</p><button type="submit">Join the Waitlist Now</button></form></section>
+  </main>
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/withhavenai/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/havenai/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/withhavenai" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:info@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="legal">
+      <!-- UPDATED LINKS -->
+      <a href="terms.html">Terms of Use</a> | 
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p>With Haven AI, LLC © 2025</p>
+    <p>“Created with care by caregivers, for caregivers.”</p>
+  </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
+    authDomain: "with-haven.firebaseapp.com",
+    projectId: "with-haven",
+    storageBucket: "with-haven.firebasestorage.app",
+    messagingSenderId: "326457103064",
+    appId: "1:326457103064:web:698a1a375b429eaa443dad",
+    measurementId: "G-5QJY53CZTQ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  async function loadBlogPosts() {
+    const querySnapshot = await getDocs(collection(db, "blogPosts"));
+    let blogHTML = "";
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      blogHTML += `
+        <article>
+          <h2>${data.Title}</h2>
+          <p>${data.Content}</p>
+          <p><em>By ${data.Author} on ${new Date(data.Date.seconds * 1000).toLocaleDateString()}</em></p>
+        </article>
+        <hr/>
+      `;
+    });
+
+    document.getElementById('blog-container').innerHTML = blogHTML;
+  }
+
+  loadBlogPosts();
+</script>
+
+</script>
+
+</body>
+</html>

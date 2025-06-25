@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon-32x32.png" />
+
+  <title>FAQ | With Haven</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .faq-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .faq-item {
+      background: white;
+      border-radius: 15px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .faq-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      position: relative;
+    }
+
+    .faq-item h3::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      font-size: 1.5rem;
+      transition: transform 0.2s ease;
+    }
+
+    .faq-item.active h3::after {
+      content: "-";
+      transform: rotate(180deg);
+    }
+
+    .faq-content {
+      margin-top: 0.75rem;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .faq-item.active .faq-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div class="sticky-bar" id="tagline-bar"></div>
+
+  <header class="hero">
+    <div class="hero-banner">
+      <img src="Haven_App_Icon.png" alt="With Haven Logo" class="hero-logo" />
+      <h1>Frequently Asked Questions</h1>
+    </div>
+    <a href="https://forms.gle/fiDPeEc5VArfEZqB9" target="_blank" class="cta-button">Join the Waitlist</a>
+  </header>
+<button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Founder Story.html">Founder's Note</a>
+    <a href="blog.html">Blog</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html" class="active">About</a>
+    <a href="newsletter.html" class="active">Newsletter</a>
+    <a href="checkout.html" class="active">Buy Now</a>
+  </nav>
+
+  <main>
+    <div class="faq-container fade-in">
+      <div class="faq-item">
+        <h3>What is Haven?</h3>
+        <div class="faq-content">
+          Haven is an emotionally intelligent AI support system created specifically for caregivers. It provides compassionate guidance, emotional relief, and practical support—any time of day, without judgment or overwhelm.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>Who is Haven for?</h3>
+        <div class="faq-content">
+          Right now, Haven is designed to support caregivers—whether you’re caring for a family member, a partner, or a patient. If you’ve ever felt the weight of holding things together for someone else, Haven is for you.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>How much does Haven cost?</h3>
+        <div class="faq-content">
+          Haven offers a 7-day free trial. After that:<br />
+          – $14/month<br />
+          – $140/year (save 17%)<br />
+          Gift subscriptions are also available.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I gift Haven to someone else?</h3>
+        <div class="faq-content">
+          Yes! You can send 1-month, 3-month, or annual access to another caregiver. Visit <a href="https://withhaven.org/gift">withhaven.org/gift</a> to learn more.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is Haven medically accurate?</h3>
+        <div class="faq-content">
+          Haven is informed by current clinical knowledge and caregiving best practices. While not a replacement for a doctor or therapist, it provides grounded, emotionally aware support you can trust—especially during late-night overwhelm.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>What makes Haven different from other apps or AI tools?</h3>
+        <div class="faq-content">
+          Haven is purpose-built for emotional caregiving support. It adapts to your tone, remembers what matters, and offers support modes based on how you're feeling. No fluff. No toxic positivity—just honest, intelligent care.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is my information private?</h3>
+        <div class="faq-content">
+          Absolutely. Your privacy is our priority. Haven does not sell your data, and your conversations are encrypted and secure.
+        </div>
+      </div>
+      <div class="faq-item">
+        <h3>Have Questions or Suggestions?</h3>
+        <div class="faq-content">
+          Please contact us at --------
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/withhavenai/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/havenai/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/withhavenai" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:info@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="legal">
+      <a href="terms.html">Terms of Use</a> | 
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+    <p>With Haven AI, LLC © 2025</p>
+    <p>“Created with care by caregivers, for caregivers.”</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".faq-item").forEach(item => {
+      item.addEventListener("click", () => {
+        item.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
