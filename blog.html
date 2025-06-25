@@ -66,6 +66,48 @@
     <p>With Haven AI, LLC © 2025</p>
     <p>“Created with care by caregivers, for caregivers.”</p>
   </footer>
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
+    authDomain: "with-haven.firebaseapp.com",
+    projectId: "with-haven",
+    storageBucket: "with-haven.firebasestorage.app",
+    messagingSenderId: "326457103064",
+    appId: "1:326457103064:web:698a1a375b429eaa443dad",
+    measurementId: "G-5QJY53CZTQ"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getFirestore(app);
+
+  async function loadBlogPosts() {
+    const querySnapshot = await getDocs(collection(db, "blogPosts"));
+    let blogHTML = "";
+
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      blogHTML += `
+        <article>
+          <h2>${data.Title}</h2>
+          <p>${data.Content}</p>
+          <p><em>By ${data.Author} on ${new Date(data.Date.seconds * 1000).toLocaleDateString()}</em></p>
+        </article>
+        <hr/>
+      `;
+    });
+
+    document.getElementById('blog-container').innerHTML = blogHTML;
+  }
+
+  loadBlogPosts();
+
+
+</script>
 </body>
 </html>
 
