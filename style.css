@@ -304,3 +304,22 @@ footer p {
   width: 100%;
   border-radius: 8px;
 }
+/*blog stuff*/
+.blog-box {
+  background-color: white;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 800px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.blog-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+#blog-container {
+  margin-bottom: 50px;
+}
+

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-  
+
   <div class="sticky-bar" id="tagline-bar"></div>
 
   <header class="hero">
@@ -20,34 +20,23 @@
       <h1>The Haven Blog</h1>
     </div>
   </header>
-<button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+  <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
   <nav class="navbar">
-        <a href="index.html" class="">Home</a>
-        <a href="Founder Story.html" class="">Founder's Note</a>
-        <a href="blog.html" class="">Blog</a>
-        <a href="faq.html" class="">FAQ</a>
-        <a href="about.html" class="active">About</a>
-        <a href="newsletter.html" class="active">Newsletter</a>
-        <a href="checkout.html" class="active">Buy Now</a>
+    <a href="index.html">Home</a>
+    <a href="Founder Story.html">Founder's Note</a>
+    <a href="blog.html">Blog</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html" class="active">About</a>
+    <a href="newsletter.html" class="active">Newsletter</a>
+    <a href="checkout.html" class="active">Buy Now</a>
   </nav>
 
   <main>
-    <div id="blog-container"></div>
-
     <section class="fade-in">
       <h2 style="text-align: center;">Latest Posts</h2>
-      <article class="blog-post">
-        <h3>5 Ways Haven Can Support You Today</h3>
-        <p class="meta">Posted June 16, 2025 | by Team Haven</p>
-        <p>Feeling overwhelmed? You’re not alone. In this post, we explore 5 powerful ways Haven can help caregivers like you, right now. From grounding emotional tools to personalized journaling prompts, each feature is designed to meet you where you are.</p>
-        <a href="#" class="read-more">Read More →</a>
-      </article>
-      <article class="blog-post">
-        <h3>Meet The Anchor: A Safe Space When Chaos Hits</h3>
-        <p class="meta">Posted June 10, 2025 | by Team Haven</p>
-        <p>The Anchor is one of the core support modes inside Haven. It offers stability, clarity, and warmth when everything else feels like it’s falling apart. Here's how it works and real stories of people who’ve relied on it.</p>
-        <a href="#" class="read-more">Read More →</a>
-      </article>
+      <div id="blog-container" class="blog-list"></div>
     </section>
   </main>
 
@@ -59,55 +48,54 @@
       <a href="mailto:info@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
     </div>
     <div class="legal">
-      <!-- UPDATED LINKS -->
       <a href="terms.html">Terms of Use</a> | 
       <a href="privacy.html">Privacy Policy</a>
     </div>
     <p>With Haven AI, LLC © 2025</p>
     <p>“Created with care by caregivers, for caregivers.”</p>
   </footer>
+
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
-    authDomain: "with-haven.firebaseapp.com",
-    projectId: "with-haven",
-    storageBucket: "with-haven.firebasestorage.app",
-    messagingSenderId: "326457103064",
-    appId: "1:326457103064:web:698a1a375b429eaa443dad",
-    measurementId: "G-5QJY53CZTQ"
-  };
+    const firebaseConfig = {
+      apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
+      authDomain: "with-haven.firebaseapp.com",
+      projectId: "with-haven",
+      storageBucket: "with-haven.firebasestorage.app",
+      messagingSenderId: "326457103064",
+      appId: "1:326457103064:web:698a1a375b429eaa443dad",
+      measurementId: "G-5QJY53CZTQ"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const db = getFirestore(app);
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getFirestore(app);
 
-  async function loadBlogPosts() {
-    const querySnapshot = await getDocs(collection(db, "blogposts"));
-    let blogHTML = "";
+    async function loadBlogPosts() {
+      const querySnapshot = await getDocs(collection(db, "blogposts"));
+      let blogHTML = "";
 
-    querySnapshot.forEach((doc) => {
-      const data = doc.data();
-      blogHTML += `
-        <article>
-          <h2>${data.Title}</h2>
-          <p>${data.Content}</p>
-          <p><em>By ${data.Author} on ${new Date(data.Date.seconds * 1000).toLocaleDateString()}</em></p>
-        </article>
-        <hr/>
-      `;
-    });
+      querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        blogHTML += `
+          <div class="blog-box fade-in">
+            <article>
+              <h2>${data.Title}</h2>
+              <p>${data.Content}</p>
+              <p><em>By ${data.Author} on ${new Date(data.Date.seconds * 1000).toLocaleDateString()}</em></p>
+            </article>
+          </div>
+        `;
+      });
 
-    document.getElementById('blog-container').innerHTML = blogHTML;
-  }
+      document.getElementById('blog-container').innerHTML = blogHTML;
+    }
 
-  loadBlogPosts();
+    loadBlogPosts();
+  </script>
 
-
-</script>
 </body>
 </html>
-
