@@ -43,7 +43,6 @@
     }
   </style>
 </head>
-
 <body>
 
 <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
@@ -60,7 +59,7 @@
 <main>
   <div class="subscription-wrapper">
     <h2>Subscribe to With Haven</h2>
-    <p>Choose your plan and enter the email for the account you would like to register with on the next page.</p>
+    <p>Choose your plan and proceed to secure checkout.</p>
 
     <label for="plan">Select Plan:</label>
     <select id="plan" onchange="switchPlan()">
@@ -70,33 +69,23 @@
 
     <div id="monthly" class="pay-button-wrapper">
       <div style="overflow: auto; display: flex; justify-content: center;">
-        <button class="cta-button" style="min-width: 212px; text-align: center;" onclick="redirectToStripe('monthly')">Pay Monthly</button>
+        <a target="_blank" href="https://buy.stripe.com/test_cN26s10uF1gCdXmaEH" class="cta-button" style="min-width: 212px; text-align: center;">Pay Monthly</a>
       </div>
     </div>
 
     <div id="yearly" class="pay-button-wrapper">
       <div style="overflow: auto; display: flex; justify-content: center;">
-        <button class="cta-button" style="min-width: 212px; text-align: center;" onclick="redirectToStripe('yearly')">Pay Yearly</button>
+        <a target="_blank" href="https://buy.stripe.com/test_5kA3fReW51gCdXmdQR" class="cta-button" style="min-width: 212px; text-align: center;">Pay Yearly</a>
       </div>
     </div>
   </div>
 </main>
 
 <script>
-  // Replace with your actual Stripe links
-  const stripeLinks = {
-    monthly: 'https://buy.stripe.com/test_xxxxxxx', // Replace with your Stripe monthly link
-    yearly: 'https://buy.stripe.com/test_yyyyyyy'   // Replace with your Stripe yearly link
-  };
-
   function switchPlan() {
     const selected = document.getElementById('plan').value;
     document.getElementById('monthly').style.display = selected === 'monthly' ? 'block' : 'none';
     document.getElementById('yearly').style.display = selected === 'yearly' ? 'block' : 'none';
-  }
-
-  function redirectToStripe(plan) {
-    window.location.href = stripeLinks[plan];
   }
 
   switchPlan();
@@ -119,4 +108,5 @@
 
 </body>
 </html>
+
 
