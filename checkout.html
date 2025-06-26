@@ -26,16 +26,40 @@
       padding: 2em;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
     }
 
-    label, select, input {
-      display: block;
-      width: 100%;
-      margin-bottom: 1em;
-      padding: 0.75em;
+    .plan-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1em;
+      margin-bottom: 1.5em;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    select {
+      padding: 0.5em;
       border-radius: 6px;
       border: 1px solid #ccc;
       font-size: 1em;
+    }
+
+    .cta-button {
+      background-color: #FF7D84;
+      color: white;
+      padding: 0.8em 2em;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      min-width: 200px;
+      cursor: pointer;
     }
 
     .pay-button-wrapper {
@@ -61,22 +85,20 @@
     <h2>Subscribe to With Haven</h2>
     <p>Choose your plan and proceed to secure checkout.</p>
 
-    <label for="plan">Select Plan:</label>
-    <select id="plan" onchange="switchPlan()">
-      <option value="monthly">$14.99/month</option>
-      <option value="yearly">$139.99/year</option>
-    </select>
+    <div class="plan-selector">
+      <label for="plan">Select Plan:</label>
+      <select id="plan" onchange="switchPlan()">
+        <option value="monthly">$14.99/month</option>
+        <option value="yearly">$139.99/year</option>
+      </select>
+    </div>
 
     <div id="monthly" class="pay-button-wrapper">
-      <div style="overflow: auto; display: flex; justify-content: center;">
-        <a target="_blank" href="https://buy.stripe.com/28E28r8rP8jscdx0fd2oE00" class="cta-button" style="min-width: 212px; text-align: center;">Pay Monthly</a>
-      </div>
+      <a target="_blank" href="https://buy.stripe.com/28E28r8rP8jscdx0fd2oE00" class="cta-button">Pay Monthly</a>
     </div>
 
     <div id="yearly" class="pay-button-wrapper">
-      <div style="overflow: auto; display: flex; justify-content: center;">
-        <a target="_blank" href="https://buy.stripe.com/00w6oH9vTgPY6Td9PN2oE01" class="cta-button" style="min-width: 212px; text-align: center;">Pay Yearly</a>
-      </div>
+      <a target="_blank" href="https://buy.stripe.com/00w6oH9vTgPY6Td9PN2oE01" class="cta-button">Pay Yearly</a>
     </div>
   </div>
 </main>
@@ -100,7 +122,8 @@
   </div>
   <div class="legal">
     <a href="terms.html">Terms of Use</a> | 
-    <a href="privacy.html">Privacy Policy</a>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="contact.html">Contact Us</a>
   </div>
   <p>With Haven AI, LLC © 2025</p>
   <p>“Created with care by caregivers, for caregivers.”</p>
@@ -108,5 +131,4 @@
 
 </body>
 </html>
-
 
