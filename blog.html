@@ -58,7 +58,7 @@
  <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-  import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+  import { getFirestore, collection, getDocs, query, where } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyA5SLk4l2p6J3vMrYQKDL6yAu0nE1alDtU",
@@ -75,8 +75,13 @@
   const db = getFirestore(app);
 
   async function loadBlogPosts() {
-    const blogQuery = query(collection(db, "blogposts"), orderBy("Date", "desc")); // ✅ New query to sort by date
-    const querySnapshot = await getDocs(blogQuery);
+    const today = new Date();
+    const postsQuery = query(
+      collection(db, "blogposts"),
+      where("Date", "<=", today)
+    );
+
+    const querySnapshot = await getDocs(postsQuery);
     let blogHTML = "";
 
     querySnapshot.forEach((doc) => {
@@ -99,27 +104,22 @@
 
     document.getElementById('blog-container').innerHTML = blogHTML;
 
-    // Connect the observer to new blog posts
     document.querySelectorAll(".fade-in").forEach((section) => {
       observer.observe(section);
     });
 
-    // Read More toggle
     document.querySelectorAll('.read-more-btn').forEach(button => {
       button.addEventListener('click', () => {
         const content = button.previousElementSibling;
         content.classList.toggle('expanded');
-        if (content.classList.contains('expanded')) {
-          button.textContent = 'Read Less';
-        } else {
-          button.textContent = 'Read More';
-        }
+        button.textContent = content.classList.contains('expanded') ? 'Read Less' : 'Read More';
       });
     });
   }
 
   loadBlogPosts();
 </script>
+
 
 
 
