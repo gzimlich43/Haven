@@ -9,6 +9,7 @@
   --white: #ffffff;
   --font-heading: 'Lora', serif;
   --font-body: 'Lato', sans-serif;
+  --transparent: rgba(255, 255, 255, 0);
 }
 
 body {
