@@ -354,3 +354,54 @@ footer p {
   margin-bottom: 15px;
 }
 
+/* === App Store / Google Play badges === */
+.store-badges {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.store-badges img {
+  height: 48px;     /* tweak if you want larger/smaller badges */
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .store-badges { justify-content: flex-start; }
+}
+/* === Download boxes (iOS / Android) === */
+.store-ctas {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+.download-btn {
+  background: var(--accent-coral);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  padding: 0.9em 1.25em;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+.download-btn i { margin-right: 0.5em; }
+.download-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.16);
+}
+.download-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+@media (min-width: 768px) {
+  .hero .store-ctas { justify-content: flex-start; }
+}
