@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="favicon-32x32.png" />
+
+  <title>With Haven | Media & Press</title>
+  <link rel="stylesheet" href="style.css" />
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="sticky-bar" id="tagline-bar"></div>
+
+  <header class="hero">
+    <div class="hero-banner">
+      <img src="Haven_App_Icon.png" alt="With Haven Logo" class="hero-logo" />
+      <h1>Haven in the Media</h1>
+
+      <!-- Coral download boxes -->
+      <div class="store-ctas" role="group" aria-label="Download With Haven AI">
+        <a
+          class="download-btn"
+          href="https://apps.apple.com/us/app/with-haven-ai/id6747011801"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="Download iOS app on the App Store"
+        >
+          <i class="fab fa-apple" aria-hidden="true"></i>
+          Download iOS
+        </a>
+        <a
+          class="download-btn"
+          href="https://play.google.com/store/apps/details?id=com.haven.withhaven"
+          target="_blank" rel="noopener noreferrer"
+          aria-label="Download Android app on Google Play"
+        >
+          <i class="fab fa-android" aria-hidden="true"></i>
+          Download Android
+        </a>
+      </div>
+      <!-- /Coral download boxes -->
+    </div>
+  </header>
+
+  <button class="menu-toggle" onclick="document.querySelector('.navbar').classList.toggle('show')">☰ Menu</button>
+
+  <nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="Founder Story.html">Founder's Note</a>
+    <a href="faq.html">FAQ</a>
+    <a href="about.html">About</a>
+    <a href="newsletter.html">Newsletter</a>
+    <a href="media.html" class="active">Media</a>
+    <a href="contact.html">Contact Us</a>
+  </nav>
+
+  <main>
+    <!-- Intro -->
+    <section class="section-wrapper fade-in" style="max-width: 1000px;">
+      <section class="content-box">
+        <h2>Press Coverage & Appearances</h2>
+        <p>Stories about Haven, interviews with our founder, and features from TV, radio, and print. Media inquiries: 
+          <a href="mailto:business@withhaven.ai"><strong>business@withhaven.ai</strong></a>.
+        </p>
+      </section>
+    </section>
+
+    <!-- Featured video (optional) -->
+    <section class="fade-in" style="text-align:center; margin-top: 10px;">
+      <h2>Featured Segment</h2>
+      <div style="position:relative; padding-bottom:35%; height:0; overflow:hidden; max-width:800px; margin:20px auto; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <!-- Replace the YouTube ID below when you have the FOX clip -->
+        <iframe src="https://www.youtube.com/embed/dctcY_3VVQk"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border-radius:12px;">
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Press grid -->
+    <section class="press-grid fade-in">
+      <!-- Example Card: Local Newspaper -->
+      <article class="press-card">
+        <div class="press-chip">Print</div>
+        <h3>“'It saved my life': Howell woman creates AI app to provide support for caregivers like her”</h3>
+        <p class="press-meta">The Livingston Daily • <time datetime="2025-09-12">Sept 17, 2025</time></p>
+        <p class="press-desc">Founder Heather shares how Haven helps families navigate the stress of caregiving with trauma-informed AI support.</p>
+        <a class="press-link" href="https://www.livingstondaily.com/story/news/local/community/howell/2025/09/17/howell-woman-creates-with-haven-ai-to-support-other-caregivers/86061237007/?gnt-cfr=1&gca-cat=p&gca-uir=false&gca-epti=z11xx30p117550c117550e002700v11xx30&gca-ft=18&gca-ds=sophi" target="_blank" rel="noopener noreferrer" aria-label="Read the newspaper article">Read article</a>
+      </article>
+
+      <!-- Example Card: FOX News -->
+      <article class="press-card">
+        <div class="press-chip">TV</div>
+        <h3>FOX 2 News Feature: “COMING SOON!”</h3>
+        <p class="press-meta">FOX News • <time datetime="2025-09-20">TBD, 2025</time></p>
+        <p class="press-desc">A look at how Haven supports overwhelmed caregivers with real-time, emotionally intelligent conversations.</p>
+        <a class="press-link" href="https://example.com/fox-news-segment" target="_blank" rel="noopener noreferrer" aria-label="Watch the FOX News feature">Watch segment</a>
+      </article>
+
+      <!-- Example Card: Podcast -->
+      <article class="press-card">
+        <div class="press-chip">Podcast</div>
+        <h3>From Diagnosis to Disruption: The Birth of With Haven AI</h3>
+        <p class="press-meta">Coffee & Grit • <time datetime="2025-07-18">July 18, 2025</time></p>
+        <p class="press-desc">Heather sits down with Jason Tracey to discuss the origin story, mission, and what’s next for Haven.</p>
+        <a class="press-link" href="https://www.youtube.com/watch?v=dctcY_3VVQk" target="_blank" rel="noopener noreferrer" aria-label="Listen to the podcast episode">Play episode</a>
+      </article>
+    </section>
+
+    
+  <footer>
+    <div class="social">
+      <a href="https://www.instagram.com/withhavenai/" target="_blank" aria-label="Instagram" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/company/havenai/" target="_blank" aria-label="LinkedIn" rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/withhavenai" target="_blank" aria-label="Facebook" rel="noopener noreferrer"><i class="fab fa-facebook"></i></a>
+      <a href="mailto:hello@withhaven.ai" aria-label="Email"><i class="fas fa-envelope"></i></a>
+    </div>
+    <div class="legal">
